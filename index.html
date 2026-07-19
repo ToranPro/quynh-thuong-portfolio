@@ -15,15 +15,15 @@
     
     <style>
         :root {
-            --primary: #D78A95; /* Hồng mận đất tinh tế */
-            --primary-light: #FFC2C7; /* Hồng đào pastel */
-            --secondary: #A07178; /* Nâu xám */
-            --bg-color: #FDF7F8; /* Nền sương mờ */
+            --primary: #D78A95; 
+            --primary-light: #FFC2C7; 
+            --secondary: #A07178; 
+            --bg-color: #FDF7F8; 
             --text-dark: #4A3538;
             --text-muted: #82666A;
             --white: rgba(255, 255, 255, 0.85); 
             --white-solid: #FFFFFF;
-            --shadow: 0 20px 40px rgba(215, 138, 149, 0.15);
+            --shadow: 0 20px 40px rgba(215, 138, 149, 0.12);
             --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
@@ -36,7 +36,6 @@
         body {
             font-family: 'Mulish', sans-serif;
             background-color: var(--bg-color);
-            /* Bổ sung họa tiết chấm bi mờ lấp đầy không gian */
             background-image: radial-gradient(rgba(215, 138, 149, 0.15) 2px, transparent 2px);
             background-size: 35px 35px;
             color: var(--text-dark);
@@ -79,10 +78,10 @@
             position: fixed; top: 0; left: 0; right: 0;
             background: rgba(253, 247, 248, 0.9); backdrop-filter: blur(15px);
             box-shadow: 0 4px 30px rgba(0,0,0,0.03); z-index: 1000;
-            padding: 18px 6%; display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 6%; display: flex; justify-content: space-between; align-items: center;
         }
         .logo { 
-            font-family: 'Cormorant Garamond', serif; font-size: 2rem; 
+            font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; 
             font-weight: 700; color: var(--primary); text-decoration: none; font-style: italic;
         }
         nav ul { list-style: none; display: flex; gap: 40px; }
@@ -102,13 +101,13 @@
         }
         .btn:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(215, 138, 149, 0.5); }
         .btn-outline {
-            background: var(--white); color: var(--primary); border: 2px solid var(--primary-light);
+            background: var(--white-solid); color: var(--primary); border: 2px solid var(--primary-light);
             box-shadow: 0 5px 15px rgba(0,0,0,0.02);
         }
         .btn-outline:hover { background: var(--primary); color: #fff; border-color: var(--primary);}
 
         /* --- LAYOUT CHUNG --- */
-        section { padding: 130px 6% 80px; max-width: 1250px; margin: 0 auto; position: relative; z-index: 1;}
+        section { padding: 100px 6% 80px; max-width: 1250px; margin: 0 auto; position: relative; z-index: 1;}
         .section-title { text-align: center; font-size: 3.8rem; margin-bottom: 60px; line-height: 1.2; }
         .section-title span { color: var(--primary); font-style: italic; }
         .section-title::after {
@@ -117,9 +116,16 @@
         }
 
         /* --- HERO SECTION --- */
-        .hero {
-            display: flex; align-items: center; justify-content: space-between; gap: 60px;
-            min-height: 100vh; padding-top: 150px; position: relative;
+        .hero-section {
+            position: relative;
+            padding: 160px 6% 120px; /* Đẩy padding để không đè vào chữ chạy */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+            max-width: 1250px;
+            margin: 0 auto;
+            min-height: 100vh;
         }
         .hero-text { flex: 1.1; position: relative; z-index: 2;}
         .hero-text h3 { font-family: 'Mulish', sans-serif; font-size: 1.15rem; color: var(--secondary); letter-spacing: 5px; text-transform: uppercase; margin-bottom: 15px; font-weight: 800;}
@@ -136,7 +142,7 @@
         .hero-text p { font-size: 1.25rem; color: var(--text-muted); margin-bottom: 40px; font-weight: 500;}
         
         .hero-img { flex: 0.9; position: relative; display: flex; justify-content: center; align-items: center;}
-        .img-container { position: relative; width: 100%; max-width: 480px; }
+        .img-container { position: relative; width: 100%; max-width: 450px; }
         
         .img-backdrop {
             position: absolute; top: -20px; left: 25px; right: -25px; bottom: 20px;
@@ -144,19 +150,20 @@
             z-index: -1; animation: float 6s ease-in-out infinite alternate-reverse;
         }
         .hero-img img {
-            width: 100%; border-radius: 200px 200px 0 0;
+            width: 100%; aspect-ratio: 3/4; border-radius: 200px 200px 0 0;
             box-shadow: var(--shadow); object-fit: cover;
             border: 12px solid var(--white-solid);
             animation: float-img 6s ease-in-out infinite alternate;
         }
         
-        /* Floating Badge (Làm trang web bớt trống) */
+        /* Floating Badge - Căn chỉnh lại để không che mặt */
         .floating-badge {
-            position: absolute; bottom: 40px; left: -30px;
-            background: rgba(255,255,255,0.9); backdrop-filter: blur(10px);
-            padding: 15px 25px; border-radius: 20px; box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+            position: absolute; bottom: -20px; right: -20px; /* Dời qua góc phải bên dưới */
+            background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
+            padding: 15px 25px; border-radius: 20px; box-shadow: 0 15px 30px rgba(0,0,0,0.1);
             display: flex; align-items: center; gap: 15px;
             animation: float 5s ease-in-out infinite alternate; border: 1px solid var(--primary-light);
+            z-index: 5;
         }
         .floating-badge i { font-size: 2rem; color: var(--primary); }
         .floating-badge div p { margin: 0; font-size: 0.9rem; color: var(--text-muted); line-height: 1.2;}
@@ -171,12 +178,12 @@
         @keyframes float-img { 0% { transform: translateY(0); } 100% { transform: translateY(-15px); } }
         @keyframes pulse { 0% { transform: scale(0.8); opacity: 0.5;} 100% { transform: scale(1.2); opacity: 1;} }
 
-        /* --- DẢI CHỮ CHẠY NGANG (MARQUEE) --- */
+        /* --- DẢI CHỮ CHẠY NGANG (MARQUEE) --- Căn chỉnh tuyệt đối sát đáy */
         .marquee-container {
-            position: absolute; bottom: 0; left: 0; width: 100vw;
+            position: absolute; bottom: 0; left: 0; width: 100%;
             background: var(--primary); color: white; padding: 12px 0;
             overflow: hidden; display: flex; z-index: 10;
-            box-shadow: 0 0 20px rgba(215, 138, 149, 0.4);
+            box-shadow: 0 -5px 20px rgba(215, 138, 149, 0.2);
         }
         .marquee-content {
             display: flex; width: max-content;
@@ -189,11 +196,12 @@
         @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
         /* --- ABOUT SECTION --- */
-        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: stretch; }
         .info-card {
             background: rgba(255, 255, 255, 0.85); padding: 50px; border-radius: 35px; box-shadow: var(--shadow);
             border: 1px solid rgba(255,255,255,1); backdrop-filter: blur(20px);
             transition: var(--transition); position: relative; overflow: hidden;
+            display: flex; flex-direction: column;
         }
         .info-card::before {
             content: ''; position: absolute; top: 0; left: 0; width: 8px; height: 100%;
@@ -201,29 +209,40 @@
         }
         .info-card:hover { transform: translateY(-8px); box-shadow: 0 30px 60px rgba(215, 138, 149, 0.18); }
         .info-card h3 { font-size: 2.5rem; margin-bottom: 30px; color: var(--text-dark); border-bottom: 1px dashed var(--primary-light); padding-bottom: 15px;}
-        .info-item { display: flex; align-items: flex-start; margin-bottom: 25px; font-size: 1.15rem;}
-        .info-item i { width: 45px; color: var(--primary); font-size: 1.5rem; margin-top: 5px;}
-        .info-item div strong { color: var(--text-dark); display: block; font-size: 1.2rem; margin-bottom: 5px;}
+        
+        /* Căn chỉnh Icon bằng Grid để thẳng hàng 100% */
+        .info-item { 
+            display: grid; 
+            grid-template-columns: 35px 1fr; 
+            gap: 15px; 
+            align-items: start; 
+            margin-bottom: 25px; 
+            font-size: 1.15rem;
+        }
+        .info-item i { color: var(--primary); font-size: 1.5rem; margin-top: 4px; text-align: center;}
+        .info-item div strong { color: var(--text-dark); display: block; font-size: 1.2rem; margin-bottom: 3px;}
 
-        /* --- PROJECTS TIMELINE --- */
+        /* --- PROJECTS TIMELINE (Căn giữa tuyệt đối) --- */
         .timeline { position: relative; max-width: 1050px; margin: 0 auto; }
         .timeline::after {
             content: ''; position: absolute; width: 4px; background: rgba(215, 138, 149, 0.3);
-            top: 0; bottom: 0; left: 50%; margin-left: -2px; border-radius: 2px;
+            top: 0; bottom: 0; left: 50%; transform: translateX(-50%); border-radius: 2px;
         }
-        .timeline-item { padding: 15px 50px; position: relative; width: 50%; }
+        .timeline-item { padding: 20px 50px; position: relative; width: 50%; }
         .timeline-item.left { left: 0; }
         .timeline-item.right { left: 50%; }
         
         .timeline-item::after {
             content: ''; position: absolute; width: 24px; height: 24px;
-            right: -12px; background-color: var(--white-solid); border: 5px solid var(--primary);
-            top: 40px; border-radius: 50%; z-index: 1; box-shadow: 0 0 0 6px rgba(215, 138, 149, 0.15);
+            background-color: var(--white-solid); border: 5px solid var(--primary);
+            top: 45px; border-radius: 50%; z-index: 1; box-shadow: 0 0 0 6px rgba(215, 138, 149, 0.15);
         }
-        .timeline-item.right::after { left: -12px; }
+        /* Căn chỉnh Transform tuyệt đối */
+        .timeline-item.left::after { right: 0; transform: translateX(50%); }
+        .timeline-item.right::after { left: 0; transform: translateX(-50%); }
 
         .timeline-content {
-            padding: 45px; background: rgba(255,255,255,0.9); border-radius: 30px;
+            padding: 45px; background: rgba(255,255,255,0.95); border-radius: 30px;
             box-shadow: var(--shadow); border: 1px solid #fff;
             backdrop-filter: blur(15px); transition: var(--transition);
         }
@@ -269,17 +288,17 @@
         .social-links a:hover { background: var(--primary); color: #fff; transform: translateY(-10px) scale(1.1); }
 
         @media (max-width: 990px) {
-            .hero, .about-grid { flex-direction: column; text-align: center; }
-            .info-item { text-align: left; }
+            .hero-section, .about-grid { flex-direction: column; text-align: center; }
+            .info-item { grid-template-columns: 1fr; text-align: center; justify-items: center; gap: 5px; }
             nav ul { display: none; }
             .hero-text h1 { font-size: 4rem; }
             .hero-img { margin-top: 60px; }
-            .floating-badge { display: none; } /* Ẩn trên mobile cho gọn */
+            .floating-badge { display: none; }
             
-            .timeline::after { left: 31px; }
+            .timeline::after { left: 31px; transform: none; }
             .timeline-item { width: 100%; padding-left: 70px; padding-right: 0px; }
             .timeline-item.right { left: 0%; }
-            .timeline-item.left::after, .timeline-item.right::after { left: 21px; }
+            .timeline-item.left::after, .timeline-item.right::after { left: 21px; transform: none; }
         }
     </style>
 </head>
@@ -303,40 +322,43 @@
         </nav>
     </header>
 
-    <section id="home" class="hero">
-        <div class="hero-text">
-            <h3>Xin chào, mình là</h3>
-            <h1 class="typewriter">Quỳnh Thương</h1>
-            <p>Sinh viên Kinh Tế Quốc Tế tại ĐHQGHN. Học kinh tế quốc tế không chỉ là một tấm bằng, mà là chiếc chìa khóa mở ra một tương lai mới nơi có nhiều điều mới hơn và rộng lớn hơn để chinh phục và khám phá.</p>
-            <a href="#projects" class="btn"><i class="fa-solid fa-leaf"></i> Khám phá Hành trình</a>
-        </div>
-        <div class="hero-img">
-            <div class="img-container">
-                <div class="img-backdrop"></div>
-                <i class="fa-solid fa-star sparkle sp-1"></i>
-                <i class="fa-solid fa-sparkles sparkle sp-2"></i>
-                <i class="fa-solid fa-star sparkle sp-3"></i>
-                
-                <img src="4bdfdf0d-9683-41b4-8f0a-b2bc71485cc9.jpeg" alt="Quỳnh Thương">
-                
-                <div class="floating-badge">
-                    <i class="fa-solid fa-palette"></i>
-                    <div>
-                        <p>Định hướng</p>
-                        <h4>Sáng tạo & Thấu cảm</h4>
+    <!-- Khối Header đã được bọc lại để tách biệt với thanh chữ chạy -->
+    <div style="position: relative; min-height: 100vh;">
+        <section id="home" class="hero-section">
+            <div class="hero-text">
+                <h3>Xin chào, mình là</h3>
+                <h1 class="typewriter">Quỳnh Thương</h1>
+                <p>Sinh viên Kinh Tế Quốc Tế tại ĐHQGHN[cite: 8]. Học kinh tế quốc tế không chỉ là một tấm bằng, mà là chiếc chìa khóa mở ra một tương lai mới nơi có nhiều điều mới hơn và rộng lớn hơn để chinh phục và khám phá[cite: 7].</p>
+                <a href="#projects" class="btn"><i class="fa-solid fa-leaf"></i> Khám phá Hành trình</a>
+            </div>
+            <div class="hero-img">
+                <div class="img-container">
+                    <div class="img-backdrop"></div>
+                    <i class="fa-solid fa-star sparkle sp-1"></i>
+                    <i class="fa-solid fa-sparkles sparkle sp-2"></i>
+                    <i class="fa-solid fa-star sparkle sp-3"></i>
+                    
+                    <img src="4bdfdf0d-9683-41b4-8f0a-b2bc71485cc9.jpeg" alt="Quỳnh Thương">
+                    
+                    <div class="floating-badge">
+                        <i class="fa-solid fa-palette"></i>
+                        <div>
+                            <p>Định hướng</p>
+                            <h4>Sáng tạo & Thấu cảm</h4>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
         
-        <!-- Dải chữ chạy ngang -->
+        <!-- Dải chữ chạy ngang được đặt tuyệt đối dưới cùng của màn hình đầu tiên -->
         <div class="marquee-container">
             <div class="marquee-content">
                 <span>✦ Sinh viên Kinh Tế Quốc Tế ✦ Vibe dịu dàng nữ tính ✦ Khám phá tri thức ✦ Sáng tạo & Trách nhiệm</span>
                 <span>✦ Sinh viên Kinh Tế Quốc Tế ✦ Vibe dịu dàng nữ tính ✦ Khám phá tri thức ✦ Sáng tạo & Trách nhiệm</span>
             </div>
         </div>
-    </section>
+    </div>
 
     <section id="about">
         <h2 class="section-title">Câu Chuyện <span>Của Mình</span></h2>
@@ -345,35 +367,36 @@
                 <h3><i class="fa-regular fa-user"></i> Thông Tin Cơ Bản</h3>
                 <div class="info-item">
                     <i class="fa-regular fa-id-badge"></i> 
-                    <div><strong>Mã Sinh Viên</strong> 25051343</div>
+                    <div><strong>Mã Sinh Viên</strong> 25051343[cite: 8]</div>
                 </div>
                 <div class="info-item">
                     <i class="fa-solid fa-building-columns"></i> 
-                    <div><strong>Ngành Học</strong> Kinh Tế Quốc Tế - ĐHKT, ĐHQGHN</div>
+                    <div><strong>Ngành Học</strong> Kinh Tế Quốc Tế - ĐHKT, ĐHQGHN[cite: 8]</div>
                 </div>
                 <div class="info-item">
                     <i class="fa-regular fa-envelope"></i> 
-                    <div><strong>Liên Hệ</strong> nguyenthiquynhthuong07@gmail.com</div>
+                    <div><strong>Liên Hệ</strong> nguyenthiquynhthuong07@gmail.com[cite: 8]</div>
                 </div>
                 <div class="info-item">
                     <i class="fa-solid fa-camera-retro"></i> 
-                    <div><strong>Sở Thích</strong> Chụp ảnh lưu giữ kỷ niệm hằng ngày & Nghe nhạc idol cho những ngày mưa.</div>
+                    <div><strong>Sở Thích</strong> Chụp ảnh lưu giữ kỷ niệm hằng ngày & Nghe nhạc idol cho những ngày mưa[cite: 7].</div>
                 </div>
             </div>
             
             <div class="info-card">
                 <h3><i class="fa-solid fa-compass"></i> Mục Tiêu & Định Hướng</h3>
-                <div class="info-item">
-                    <i class="fa-solid fa-quote-left" style="font-size: 1.2rem; margin-top: 8px;"></i>
-                    <div style="font-style: italic; color: var(--text-muted);">"Hành trình học tập của em không hướng đến một đích đến hoàn hảo, mà là hành trình tích lũy để ngày mai tốt hơn ngày hôm qua."</div>
+                <div class="info-item" style="grid-template-columns: 1fr;">
+                    <div style="font-style: italic; color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; border-left: 3px solid var(--primary); padding-left: 15px;">
+                        "Hành trình học tập của em không hướng đến một đích đến hoàn hảo, mà là hành trình tích lũy để ngày mai tốt hơn ngày hôm qua[cite: 7]."
+                    </div>
                 </div>
                 <div class="info-item">
                     <i class="fa-solid fa-graduation-cap"></i> 
-                    <div><strong>Mục tiêu ngắn hạn</strong> Tốt nghiệp bằng Giỏi trường Kinh tế và chinh phục thêm một ngoại ngữ.</div>
+                    <div><strong>Mục tiêu ngắn hạn</strong> Tốt nghiệp bằng Giỏi trường Kinh tế và chinh phục thêm một ngoại ngữ[cite: 7].</div>
                 </div>
                 <div class="info-item">
                     <i class="fa-solid fa-briefcase"></i> 
-                    <div><strong>Định hướng tương lai</strong> Trở thành CEO, một nhà kinh tế học - làm chỗ dựa vững chắc cho bản thân và gia đình.</div>
+                    <div><strong>Định hướng tương lai</strong> Trở thành CEO, một nhà kinh tế học - làm chỗ dựa vững chắc cho bản thân và gia đình[cite: 7].</div>
                 </div>
             </div>
         </div>
@@ -383,12 +406,12 @@
         <h2 class="section-title">Hành Trình <span>Dự Án Số</span></h2>
         
         <div class="timeline">
-            <!-- ĐÃ SỬA LẠI TÊN FILE CHUẨN Ở MỤC HREF -->
+            <!-- ĐÃ SỬA LẠI TÊN FILE CHUẨN (Viết thường, không dấu, không khoảng trắng) -->
             <div class="timeline-item left">
                 <div class="timeline-content">
                     <h3>Bài 1: Quản Lý Dữ Liệu</h3>
                     <div class="tags"><span class="tag">Windows</span><span class="tag">File Explorer</span></div>
-                    <p>Làm quen và thành thạo các thao tác quản lý dữ liệu cơ bản trên hệ điều hành Windows thông qua File Explorer. Rèn luyện kỹ năng tổ chức, sắp xếp tệp tin khoa học.</p>
+                    <p>Làm quen và thành thạo các thao tác quản lý dữ liệu cơ bản trên hệ điều hành Windows thông qua File Explorer. Rèn luyện kỹ năng tổ chức, sắp xếp tệp tin khoa học[cite: 7].</p>
                     <a href="bt1.pdf" class="btn btn-outline"><i class="fa-solid fa-arrow-right"></i> Xem báo cáo</a>
                 </div>
             </div>
@@ -397,7 +420,7 @@
                 <div class="timeline-content">
                     <h3>Bài 2: Nghiên Cứu Học Thuật</h3>
                     <div class="tags"><span class="tag">Research</span><span class="tag">Tư duy phản biện</span></div>
-                    <p>Hình thành quy trình tìm kiếm tài liệu khoa học có hệ thống. Đánh giá tính học thuật, độ tin cậy và giá trị khoa học của các nguồn thông tin.</p>
+                    <p>Hình thành quy trình tìm kiếm tài liệu khoa học có hệ thống. Đánh giá tính học thuật, độ tin cậy và giá trị khoa học của các nguồn thông tin[cite: 7].</p>
                     <a href="bt2.pdf" class="btn btn-outline"><i class="fa-solid fa-arrow-right"></i> Xem báo cáo</a>
                 </div>
             </div>
@@ -406,7 +429,7 @@
                 <div class="timeline-content">
                     <h3>Bài 3: Nghệ Thuật Viết Prompt</h3>
                     <div class="tags"><span class="tag">AI Prompting</span><span class="tag">LLM</span></div>
-                    <p>Làm chủ nghệ thuật giao tiếp với các mô hình ngôn ngữ lớn. Thử nghiệm các kỹ thuật Role Prompting, Chain-of-Thought để tóm tắt tài liệu, giải thích khái niệm.</p>
+                    <p>Làm chủ nghệ thuật giao tiếp với các mô hình ngôn ngữ lớn. Thử nghiệm các kỹ thuật Role Prompting, Chain-of-Thought để tóm tắt tài liệu, giải thích khái niệm[cite: 7].</p>
                     <a href="bt3.pdf" class="btn btn-outline"><i class="fa-solid fa-arrow-right"></i> Xem báo cáo</a>
                 </div>
             </div>
@@ -415,7 +438,7 @@
                 <div class="timeline-content">
                     <h3>Bài 4: Hợp Tác Trực Tuyến</h3>
                     <div class="tags"><span class="tag">Teamwork</span><span class="tag">Workspace</span></div>
-                    <p>Rèn luyện kỹ năng làm việc nhóm trực tuyến. Thiết lập công cụ bổ trợ (Sheets, Docs, CapCut) để hoàn thiện sản phẩm truyền thông "AI – Vị bác sĩ số trong túi áo".</p>
+                    <p>Rèn luyện kỹ năng làm việc nhóm trực tuyến. Thiết lập công cụ bổ trợ (Sheets, Docs, CapCut) để hoàn thiện sản phẩm truyền thông "AI – Vị bác sĩ số trong túi áo"[cite: 7].</p>
                     <a href="bt4.pdf" class="btn btn-outline"><i class="fa-solid fa-arrow-right"></i> Xem báo cáo</a>
                 </div>
             </div>
@@ -424,7 +447,7 @@
                 <div class="timeline-content">
                     <h3>Bài 5: Sáng Tạo Cùng AI</h3>
                     <div class="tags"><span class="tag">Gemini</span><span class="tag">Canva AI</span><span class="tag">CapCut</span></div>
-                    <p>Ứng dụng AI tạo sinh vào quy trình sáng tạo "Dự án Empathy" nhằm chia sẻ áp lực học đường. Phối hợp tối ưu giữa sức mạnh AI và trí tuệ sáng tạo con người.</p>
+                    <p>Ứng dụng AI tạo sinh vào quy trình sáng tạo "Dự án Empathy" nhằm chia sẻ áp lực học đường. Phối hợp tối ưu giữa sức mạnh AI và trí tuệ sáng tạo con người[cite: 7].</p>
                     <a href="bt5.pdf" class="btn btn-outline"><i class="fa-solid fa-arrow-right"></i> Xem báo cáo</a>
                 </div>
             </div>
@@ -433,7 +456,7 @@
                 <div class="timeline-content">
                     <h3>Bài 6: AI Có Trách Nhiệm</h3>
                     <div class="tags"><span class="tag">Đạo đức</span><span class="tag">Liêm chính</span></div>
-                    <p>Nâng cao nhận thức về liêm chính học thuật. Phân tích chính sách trường học, thực hành viết báo cáo Vĩ mô và xây dựng bộ quy chuẩn ứng xử cá nhân với AI.</p>
+                    <p>Nâng cao nhận thức về liêm chính học thuật. Phân tích chính sách trường học, thực hành viết báo cáo Vĩ mô và xây dựng bộ quy chuẩn ứng xử cá nhân với AI[cite: 7].</p>
                     <a href="bt6.pdf" class="btn btn-outline"><i class="fa-solid fa-arrow-right"></i> Xem báo cáo</a>
                 </div>
             </div>
@@ -444,7 +467,7 @@
         <h2 class="section-title">Gửi Lại <span>Thanh Xuân</span></h2>
         <div class="summary-wrapper">
             <p class="summary-text">
-                "Portfolio này không đơn thuần là một bản hồ sơ năng lực số. Đối với em, nó giống như một cuốn nhật ký ghi lại từng bước chân chập chững nhưng đầy kiên trì trên con đường học và tự học môn công nghệ số cũng như những cái mới của bản thân em. Thử thách lớn nhất là vượt qua 'sự lười biếng tư duy' khi AI trả kết quả quá nhanh. Vượt qua cám dỗ đó để ngồi lại, kiểm chứng từng nguồn tài liệu, gọt giũa lại từng câu chữ của AI bằng giọng văn của chính mình đã giúp em rèn luyện tính kỷ luật, sự kiên nhẫn. Công nghệ dù hiện đại đến đâu cũng chỉ là bệ đỡ, còn con người mới là người cầm lái và tạo ra giá trị cốt lõi."
+                "Portfolio này không đơn thuần là một bản hồ sơ năng lực số. Đối với em, nó giống như một cuốn nhật ký ghi lại từng bước chân chập chững nhưng đầy kiên trì trên con đường học và tự học môn công nghệ số cũng như những cái mới của bản thân em[cite: 7]. Thử thách lớn nhất là vượt qua 'sự lười biếng tư duy' khi AI trả kết quả quá nhanh. Vượt qua cám dỗ đó để ngồi lại, kiểm chứng từng nguồn tài liệu, gọt giũa lại từng câu chữ của AI bằng giọng văn của chính mình đã giúp em rèn luyện tính kỷ luật, sự kiên nhẫn. Công nghệ dù hiện đại đến đâu cũng chỉ là bệ đỡ, còn con người mới là người cầm lái và tạo ra giá trị cốt lõi[cite: 7]."
             </p>
             <br>
             <h3 style="font-size: 2.5rem; color: var(--primary); margin-top: 20px;">— Quỳnh Thương —</h3>
@@ -453,7 +476,7 @@
 
     <footer>
         <h2>Quỳnh Thương.</h2>
-        <p style="color: var(--text-muted); font-size: 1.2rem; margin-bottom: 10px; font-style: italic;">Vibe dịu dàng nữ tính - Sáng tạo và trách nhiệm</p>
+        <p style="color: var(--text-muted); font-size: 1.2rem; margin-bottom: 10px; font-style: italic;">Vibe dịu dàng nữ tính - Sáng tạo và trách nhiệm[cite: 8]</p>
         <div class="social-links">
             <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
             <a href="#"><i class="fa-brands fa-instagram"></i></a>
